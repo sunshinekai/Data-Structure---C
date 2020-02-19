@@ -125,7 +125,7 @@ void SeqListRmove(Seqlist* ps, SLDataType x)
 	{
 		SeqListErase(ps, pos);
 	}
-}   // 顺序表移动
+}   // 顺序表删除数据x
 
 void SeqListBubbleSort(Seqlist* ps)
 {
@@ -147,7 +147,7 @@ void SeqListBubbleSort(Seqlist* ps)
 			break;
 		}
 	}
-}
+}   //顺序表的冒泡排序
 
 int SeqListBinaryFind(Seqlist* ps, SLDataType x)
 {
