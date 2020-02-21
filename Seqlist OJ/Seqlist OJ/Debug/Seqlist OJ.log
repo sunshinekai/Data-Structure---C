@@ -1,0 +1,4 @@
+﻿  test.c
+d:\git资源\c-code\seqlist oj\seqlist oj\test.c(136): warning C4013: “malloc”未定义；假设外部返回 int
+MSVCRTD.lib(crtexe.obj) : error LNK2019: 无法解析的外部符号 _main，该符号在函数 ___tmainCRTStartup 中被引用
+D:\git资源\C-code\Seqlist OJ\Debug\Seqlist OJ.exe : fatal error LNK1120: 1 个无法解析的外部命令
