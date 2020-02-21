@@ -25,6 +25,7 @@ int removeElement(int* nums, int numsSize, int val)
 	}
 	return dst;
 }
+
 /*
 2.给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
@@ -65,6 +66,7 @@ int removeDuplicates(int* nums, int numsSize)
 
 	return dst;
 }
+
 /*
 3.给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。
 说明:
@@ -93,6 +95,7 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
 	while (end2 >= 0)
 		nums1[end--] = nums2[end2--];
 }
+
 /*
  4.给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
  链接:https://leetcode-cn.com/problems/rotate-array/
@@ -115,6 +118,7 @@ void rotate(int* nums, int numsSize, int k)
 		}
 	}
 }
+
 /*
 5.对于非负整数 X 而言，X 的数组形式是每位数字按从左到右的顺序形成的数组。例如，如果 X = 1231，那么其数组形式为 [1,2,3,1]。
 给定非负整数 X 的数组形式 A，返回整数 X+K 的数组形式。
