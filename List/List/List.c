@@ -1,5 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include"List.h"
+
 ListNode* BuyListNode(LTDataType x)
 {
 	ListNode *node = (ListNode*)malloc(sizeof(ListNode));
