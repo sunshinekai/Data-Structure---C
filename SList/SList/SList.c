@@ -1,5 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include "SList.h"
+
 SListNode* BuySListNode(SLTDataType x)
 {
 	SListNode* node = (SListNode*)malloc(sizeof(SListNode));
@@ -97,6 +97,7 @@ void SListPopFront(SListNode** pplist)
 		*pplist = next;
 	}
 }   // 单链表头删
+
 SListNode* SListFind(SListNode* plist, SLTDataType x)
 {
 	SListNode* cur = plist;
@@ -110,6 +111,7 @@ SListNode* SListFind(SListNode* plist, SLTDataType x)
 
 	return NULL;
 }   // 单链表查找
+
 void SListInsertAfter(SListNode* pos, SLTDataType x)
 {
 	assert(pos);
@@ -119,6 +121,7 @@ void SListInsertAfter(SListNode* pos, SLTDataType x)
 	newnode->next = next;
 }   // 单链表在pos位置之后插入x
     // 在pos之前插入要遍历两次，且必须从头开始找到pos的前一个数据
+
 void SListEraseAfter(SListNode* pos)
 {
 	SListNode* next = pos->next;
@@ -130,13 +133,16 @@ void SListEraseAfter(SListNode* pos)
 	}
 }   // 单链表删除pos位置之后的值
     // 在数据之前删除要遍历两次，且必须从头开始找到pos
+
 void SListDestory(SListNode** pplist)
 {
-	SListNode* cur;
-	while (* pplist)
+	SListNode* cur = *pplist;
+
+	while (cur)
 	{
-		cur = *pplist;
-		*pplist = cur->next;
+		SListNode* next = cur->next;
 		free(cur);
+		cur = next;
 	}
+	*pplist = NULL;
 }   // 单链表的销毁

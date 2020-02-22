@@ -1,5 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include "SList.h"
+
 void TestSList1()
 {
 	SListNode* plist = NULL;
@@ -71,6 +71,7 @@ void TestSList3()
 
 	SListDestory(&plist);
 	SListPrint(plist);
+
 }   //œ˙ªŸ≤‚ ‘
 int main()
 {
