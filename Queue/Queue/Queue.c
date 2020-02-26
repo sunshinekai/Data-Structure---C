@@ -25,6 +25,7 @@ void QueueDestory(Queue* pq)
 	}
 	pq->front = pq->back = NULL;
 }	// 销毁队列
+
 void QueuePush(Queue* pq, QDataType x)
 {
 	assert(pq);
@@ -40,6 +41,7 @@ void QueuePush(Queue* pq, QDataType x)
 		pq->back = newnode;
 	}
 }	// 队尾入队列
+
 void QueuePop(Queue* pq)
 {
 	assert(pq);
@@ -51,21 +53,25 @@ void QueuePop(Queue* pq)
 		pq->back = NULL;
 	}
 }	// 队头出队列
+
 QDataType QueueFront(Queue* pq)
 {
 	assert(pq);
 	return pq->front->data;
 }	// 获取队头元素
+
 QDataType QueueBack(Queue* pq)
 {
 	assert(pq);
 	return pq->back->data;
 }	// 获取队尾元素
+
 int QueueEmpty(Queue* pq)
 {
 	assert(pq);
 	return pq->front == NULL ? 1 : 0;
 }	// 检测队列是否为空，如果为空返回非零结果，如果非空返回0
+
 size_t QueueSize(Queue* pq)
 {
 	assert(pq);
@@ -77,6 +83,5 @@ size_t QueueSize(Queue* pq)
 		++n;
 		cur = cur->next;
 	}
-
 	return n;
 }	// 获取队列中有效元素个数
