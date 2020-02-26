@@ -45,7 +45,8 @@ int StackEmpty(Stack* pst)
 {
 	assert(pst);
 	return pst->top == 0 ? 1 : 0;
-}	// 检测栈是否为空，如果为空返回非零结果，如果不为空返回0 
+}	// 检测栈是否为空，如果为空返回非零结果，如果不为空返回0
+
 size_t StackSize(Stack* pst)
 {
 	assert(pst);
