@@ -1,11 +1,9 @@
 /*
-1.给定一个只包括 '('，')'，'{'，'}'，'['，']'?的字符串，判断字符串是否有效。
-
+1.给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
 有效字符串需满足：
-1.左括号必须用相同类型的右括号闭合。
-2.左括号必须以正确的顺序闭合
-
-链接：https ://leetcode-cn.com/problems/valid-parentheses/
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+链接：https://leetcode-cn.com/problems/valid-parentheses/
 */
 
 typedef char STDataType;
@@ -115,6 +113,7 @@ bool isValid(char * s){
 	return ret;
 }
 
+
 /*
 2. 用队列实现栈
 使用队列实现栈的下列操作：
@@ -122,7 +121,7 @@ push(x) --元素 x 入栈
 pop() --移除栈顶元素
 top() --获取栈顶元素
 empty() --返回栈是否为空
-链接：https ://leetcode-cn.com/problems/implement-stack-using-queues
+链接：https://leetcode-cn.com/problems/implement-stack-using-queues/
 */
 
 typedef int QDataType;
@@ -302,15 +301,165 @@ void myStackFree(MyStack* obj) {
 * myStackFree(obj);
 */
 
+
+/*
+3.使用栈实现队列的下列操作：
+push(x) -- 将一个元素放入队列的尾部。
+pop() -- 从队列首部移除元素。
+peek() -- 返回队列首部的元素。
+empty() -- 返回队列是否为空。
+链接：https://leetcode-cn.com/problems/implement-queue-using-stacks
+*/
+
+typedef int STDataType;
+typedef struct Stack
+{
+	STDataType* a;
+	size_t top;   //栈顶
+	size_t capacity;   // 容量
+}Stack;   // 支持动态增长的栈
+
+void StackInit(Stack* pst)
+{
+	assert(pst);
+	pst->a = NULL;
+	pst->top = pst->capacity = 0;
+}   // 初始化栈
+
+void StackDestory(Stack* pst)
+{
+	assert(pst);
+	free(pst->a);
+	pst->a = NULL;
+	pst->top = pst->capacity = 0;
+}   //栈的销毁
+
+void StackPush(Stack* pst, STDataType x)
+{
+	assert(pst);
+	if (pst->top == pst->capacity)
+	{
+		size_t newcapacity = pst->capacity == 0 ? 4 : pst->capacity * 2;
+		pst->a = (STDataType*)realloc(pst->a, newcapacity*sizeof(STDataType));
+		pst->capacity = newcapacity;
+	}
+	pst->a[pst->top] = x;
+	pst->top++;
+}   // 入栈
+
+void StackPop(Stack* pst)
+{
+	assert(pst && pst->top > 0);
+	--pst->top;
+}   // 出栈
+
+STDataType StackTop(Stack* pst)
+{
+	assert(pst);
+	return pst->a[pst->top - 1];
+}   // 获取栈顶元素
+
+int StackEmpty(Stack* pst)
+{
+	assert(pst);
+	return pst->top == 0 ? 1 : 0;
+}   // 检测栈是否为空，如果为空返回非零结果，如果不为空返回0
+
+size_t StackSize(Stack* pst)
+{
+	assert(pst);
+	return pst->top;
+}   // 获取栈中有效元素个数
+
+typedef struct {
+	Stack pushst;
+	Stack popst;
+} MyQueue;
+
+/** Initialize your data structure here. */
+
+MyQueue* myQueueCreate() {
+	MyQueue* pst = (MyQueue*)malloc(sizeof(MyQueue));
+	StackInit(&pst->pushst);
+	StackInit(&pst->popst);
+	return pst;
+}
+
+/** Push element x to the back of queue. */
+void myQueuePush(MyQueue* obj, int x) {
+	StackPush(&obj->pushst, x);
+}
+
+/** Removes the element from in front of queue and returns that element. */
+int myQueuePop(MyQueue* obj) {
+	if (StackEmpty(&obj->pushst) == 0 && StackEmpty(&obj->popst) == 1)
+	{
+		while (StackEmpty(&obj->pushst) == 0)
+		{
+			int ret = StackTop(&obj->pushst);
+			StackPush(&obj->popst, ret);
+			StackPop(&obj->pushst);
+		}
+	}
+	int ret = StackTop(&obj->popst);
+	StackPop(&obj->popst);
+	return ret;
+}
+
+/** Get the front element. */
+int myQueuePeek(MyQueue* obj) {
+	int flag = 0;
+	if (StackEmpty(&obj->pushst) == 0 && StackEmpty(&obj->popst) == 1)
+		//pushst 非空 popst 空
+	{
+		while (StackEmpty(&obj->pushst) == 0)
+		{
+			flag = StackTop(&obj->pushst);
+			StackPush(&obj->popst, flag);
+			StackPop(&obj->pushst);
+		}
+		flag = StackTop(&obj->popst);
+	}
+
+	else
+		flag = StackTop(&obj->popst);
+
+	return flag;
+}
+
+/** Returns whether the queue is empty. */
+bool myQueueEmpty(MyQueue* obj) {
+	return  StackEmpty(&(obj->pushst)) == 1
+		&& StackEmpty(&(obj->popst)) == 1;
+}
+
+void myQueueFree(MyQueue* obj) {
+	StackDestory(&(obj->pushst));
+	StackDestory(&(obj->popst));
+	free(obj);
+}
+
+/**
+* Your MyQueue struct will be instantiated and called as such:
+* MyQueue* obj = myQueueCreate();
+* myQueuePush(obj, x);
+
+* int param_2 = myQueuePop(obj);
+
+* int param_3 = myQueuePeek(obj);
+
+* bool param_4 = myQueueEmpty(obj);
+
+* myQueueFree(obj);
+*/
+
+
 /*
 4.设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）
 原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。
-
-循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，
-一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。
-但是使用循环队列，我们能使用这些空间去存储新的值。
-
-链接：https ://leetcode-cn.com/problems/design-circular-queue
+循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，
+我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。
+链接：https://leetcode-cn.com/problems/design-circular-queue
 */
 
 typedef struct {
