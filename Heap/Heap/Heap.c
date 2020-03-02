@@ -125,4 +125,15 @@ int HeapEmpty(Heap* hp)
 	return hp->size == 0 ? 1 : 0;
 }   // 堆的判空
 
-void HeapSort(int* a, int n);   // 对数组进行堆排序
+
+void HeapSort(int* a, int n)
+{
+	//升序大堆
+	for (int i = (n - 1 - 1) / 2; i >= 0; i++)
+	{
+		AdjustDown(a, n, i);
+	}
+	int end = n;
+	Swap(a[0], a[end]);
+	AdjustDown(a, end, 0);
+}   // 对数组进行堆排序
