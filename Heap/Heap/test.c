@@ -23,7 +23,7 @@ void TestTopK()
 {
 	size_t n = 10000;
 	int* a = (int*)malloc(sizeof(int)*n);
-	srand(time(0));
+	srand((unsigned int)time(NULL));
 	for (size_t i = 0; i < n; i++)
 	{
 		a[i] = rand() % 1000000;
@@ -52,7 +52,7 @@ void TestTopK()
 	}
 
 	HeapPrint(&hp);
-}
+}   //TopKÎÊÌâ
 
 int main()
 {
