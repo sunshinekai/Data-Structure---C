@@ -15,10 +15,10 @@ void AdjustDown(HPDataType* a, int n, int root)
 	while (child < n)
 	{
 		//选出较小的孩子
-		if (child + 1 < n && a[child + 1] < a[child])
+		if (child + 1 < n && a[child + 1] > a[child])
 			++child;
 
-		if (a[child] < a[parent])
+		if (a[child] > a[parent])
 		{
 			Swap(&a[child], &a[parent]);
 			parent = child;
@@ -29,7 +29,7 @@ void AdjustDown(HPDataType* a, int n, int root)
 			break;
 		}
 	}
-}	//向下调整
+}	//向下调整算法
 
 void AdjustUp(HPDataType* a, int n, int child)
 {
@@ -37,7 +37,7 @@ void AdjustUp(HPDataType* a, int n, int child)
 	int parent = (child - 1) / 2;
 	while (child > 0)
 	{
-		if (a[child] < a[parent])
+		if (a[child] > a[parent])
 		{
 			Swap(&a[child], &a[parent]);
 			child = parent;
@@ -48,7 +48,7 @@ void AdjustUp(HPDataType* a, int n, int child)
 			break;
 		}
 	}
-}   //向上调整
+}   //向上调整算法
 
 void HeapCreate(Heap* hp, HPDataType* a, int n)
 {
@@ -125,14 +125,21 @@ int HeapEmpty(Heap* hp)
 	return hp->size == 0 ? 1 : 0;
 }   // 堆的判空
 
-//void HeapSort(int* a, int n)
-//{
-//	//升序大堆
-//	for (int i = (n - 1 - 1) / 2; i >= 0; i++)
-//	{
-//		AdjustDown(a, n, i);
-//	}
-//	int end = n;
-//	Swap(a[0], a[end]);
-//	AdjustDown(a, end, 0);
-//}   // 对数组进行堆排序
+void HeapSort(int* a, int n)
+{
+	//升序建大堆
+	//降序建小堆
+	for (int i = (n - 1 - 1) / 2; i >= 0; i--)
+	{
+		AdjustDown(a, n, i);
+	}
+
+	int end = n - 1;
+	while (end > 0)
+	{
+		Swap(&a[0], &a[end]);
+		AdjustDown(a, end, 0);
+		end--;
+	}
+
+}   // 对数组进行堆排序

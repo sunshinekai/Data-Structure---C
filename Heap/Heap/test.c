@@ -54,8 +54,20 @@ void TestTopK()
 	HeapPrint(&hp);
 }   //TopKŒ Ã‚
 
+void TestHeapSort()
+{
+	HPDataType a[10] = { 2, 1, 5, 3, 6, 4, 8, 9, 0, 7 };
+	size_t length = sizeof(a) / sizeof(a[0]);
+	HeapSort(a, length);
+	for (size_t i = 0; i < length; i++)
+	{
+		printf("%d ", a[i]);
+	}
+	printf("\n");
+}
+
 int main()
 {
-	TestTopK();
+	TestHeapSort();
 	return 0;
 }
