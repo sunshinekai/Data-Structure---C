@@ -48,7 +48,7 @@ void AdjustUp(HPDataType* a, int n, int child)
 			break;
 		}
 	}
-}   //向上调整算法
+}	//向上调整算法
 
 void HeapCreate(Heap* hp, HPDataType* a, int n)
 {
@@ -73,15 +73,15 @@ void HeapPrint(Heap* hp)
 		printf("%d ", hp->a[i]);
 	}
 	printf("\n");
-}   //堆的打印
+}	//堆的打印
 
-void HeapDestory(Heap* hp)   // 堆的销毁
+void HeapDestory(Heap* hp)   
 {
 	assert(hp);
 	free(hp->a);
 	hp->a = NULL;
 	hp->size = hp->capacity = 0;
-}
+}	// 堆的销毁
 
 void HeapPush(Heap* hp, HPDataType x)
 {
@@ -97,7 +97,7 @@ void HeapPush(Heap* hp, HPDataType x)
 
 	//向上调整
 	AdjustUp(hp->a, hp->size, hp->size - 1);
-}   // 堆的插入
+}	// 堆的插入
 
 void HeapPop(Heap* hp)
 {
@@ -105,7 +105,7 @@ void HeapPop(Heap* hp)
 	Swap(&hp->a[0], &hp->a[hp->size - 1]);
 	--hp->size;
 	AdjustDown(hp->a, hp->size, 0);
-}   // 堆的删除
+}	// 堆的删除
 
 HPDataType HeapTop(Heap* hp)
 {
@@ -113,17 +113,17 @@ HPDataType HeapTop(Heap* hp)
 	return hp->a[0];
 }	// 取堆顶的数据
 
-int HeapSize(Heap* hp)   // 堆的数据个数
+int HeapSize(Heap* hp)
 {
 	assert(hp);
 	return hp->size;
-}
+}	// 堆的数据个数
 
 int HeapEmpty(Heap* hp)
 {
 	assert(hp);
 	return hp->size == 0 ? 1 : 0;
-}   // 堆的判空
+}	// 堆的判空
 
 void HeapSort(int* a, int n)
 {
@@ -141,5 +141,4 @@ void HeapSort(int* a, int n)
 		AdjustDown(a, end, 0);
 		end--;
 	}
-
-}   // 对数组进行堆排序
+}	// 对数组进行堆排序
