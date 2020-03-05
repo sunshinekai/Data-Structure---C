@@ -52,7 +52,7 @@ void TestTopK()
 	}
 
 	HeapPrint(&hp);
-}   //TopK问题
+}	// TopK问题
 
 void TestHeapSort()
 {
