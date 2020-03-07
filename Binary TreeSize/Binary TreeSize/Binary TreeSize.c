@@ -49,8 +49,8 @@ int BinaryTreeLevelKSize(BTNode* root, int k)
 
 BTNode* BinaryTreeFind(BTNode* root, BTDataType x)
 {
-	// 二叉树查找值为x的节点
-}
+	
+}	// 二叉树查找值为x的节点
 
 void BinaryTreePrevOrder(BTNode* root)
 {
@@ -75,4 +75,4 @@ void BinaryTreeLevelOrder(BTNode* root)
 int BinaryTreeComplete(BTNode* root)
 {
 	
-}// 判断二叉树是否是完全二叉树
+}	// 判断二叉树是否是完全二叉树
