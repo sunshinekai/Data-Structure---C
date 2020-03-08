@@ -10,8 +10,10 @@ BTNode* CreateTree(BTDataType* a, int* pindex)
 
 	++(*pindex);
 	root->_left = CreateTree(a, pindex);
+
 	++(*pindex);
 	root->_right = CreateTree(a, pindex);
+
 	return root;
 }	// 通过前序遍历的数组"ABD##E#H##CF##G##"构建二叉树
 
