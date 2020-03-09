@@ -1,6 +1,7 @@
 #pragma once
 #include<stdio.h>
-
+#include<stdlib.h>
+#include<assert.h>
 
 typedef char BTDataType;
 typedef struct BinaryTreeNode
@@ -10,9 +11,8 @@ typedef struct BinaryTreeNode
 	struct BinaryTreeNode* _right;
 }BTNode;
 
-
-BTNode* BinaryTreeCreate(BTDataType* a, int n, int* pi);   // 通过前序遍历的数组"ABD##E#H##CF##G##"构建二叉树
-int BinaryTreeDestory(BTNode** root);   // 二叉树销毁
+BTNode* BinaryTreeCreate(BTDataType* a, int* pindex);	// 通过前序遍历的数组"ABD##E#H##CF##G##"构建二叉树
+void BinaryTreeDestory(BTNode** root);   // 二叉树销毁
 int BinaryTreeSize(BTNode* root);   // 二叉树节点个数
 int BinaryTreeLeafSize(BTNode* root);   // 二叉树叶子节点个数
 int BinaryTreeLevelKSize(BTNode* root, int k);	// 二叉树第k层节点个数
