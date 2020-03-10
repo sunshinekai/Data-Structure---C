@@ -36,14 +36,16 @@ int BinaryTreeSize(BTNode* root)
 		return 0;
 
 	return BinaryTreeSize(root->_left) + BinaryTreeSize(root->_right) + 1;
-}   // 二叉树节点个数
+}	// 二叉树节点个数
 
 int BinaryTreeLeafSize(BTNode* root)
 {
 	if (root == NULL)
 		return 0;
+
 	else if (root->_left == NULL && root->_right == NULL)
 		return 1;
+
 	return BinaryTreeLeafSize(root->_left) + BinaryTreeLeafSize(root->_right);
 }	// 二叉树叶子节点个数
 
@@ -63,12 +65,13 @@ BTNode* BinaryTreeFind(BTNode* root, BTDataType x)
 	if (root == NULL)
 		return NULL;
 
-	if (root->_data == x)
+	else if (root->_data == x)
 		return root;
 
 	else
 	{
-		BTNode* temp = BinaryTreeFind(root->_left, x);	// 左
+		BTNode* temp;
+		temp = BinaryTreeFind(root->_left, x);	// 左
 
 		if (!temp)
 			return BinaryTreeFind(root->_right, x);	//右
@@ -129,7 +132,7 @@ void BinaryTreeLevelOrder(BTNode* root)
 			QueuePush(&q, front->_right);
 	}
 	printf("\n");
-}	// 层序遍历 
+}	// 二叉树层序遍历 
 
 int BinaryTreeComplete(BTNode* root)
 {
