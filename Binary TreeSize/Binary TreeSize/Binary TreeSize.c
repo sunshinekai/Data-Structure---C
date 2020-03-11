@@ -85,7 +85,7 @@ void BinaryTreePrevOrder(BTNode* root)
 {
 	if (root)
 	{
-		putchar(root->_data );
+		printf("%c ", root->_data);
 		BinaryTreePrevOrder(root->_left);
 		BinaryTreePrevOrder(root->_right);
 	}
@@ -96,7 +96,7 @@ void BinaryTreeInOrder(BTNode* root)
 	if (root)
 	{
 		BinaryTreeInOrder(root->_left);
-		putchar(root->_data );
+		printf("%c ", root->_data);
 		BinaryTreeInOrder(root->_right);
 	}
 }	// 二叉树中序遍历
@@ -107,7 +107,7 @@ void BinaryTreePostOrder(BTNode* root)
 	{
 		BinaryTreePostOrder(root->_left);
 		BinaryTreePostOrder(root->_right);
-		putchar(root->_data );
+		printf("%c ", root->_data);
 	}
 }	// 二叉树后序遍历
 
