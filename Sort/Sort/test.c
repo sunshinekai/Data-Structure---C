@@ -1,19 +1,55 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include"Sort.h"
 
 void TestInsertSort()
 {
 	int a[10] = { 4, 5, 8, 7, 9, 1, 6, 3, 0, 2 };
-	size_t n = sizeof(a) / sizeof(a[0]);
+	int n = sizeof(a) / sizeof(a[0]);
 	InsertSort(a, n);
 	PrintArray(a, n);
 }
 
+void TestShellSort()
+{
+	int a[10] = { 4, 5, 8, 7, 9, 1, 6, 3, 0, 2 };
+	int n = sizeof(a) / sizeof(a[0]);
+	ShellSort(a, n);
+	PrintArray(a, n);
+}
 
-//void TestOP()
+void TestSelectSort()
+{
+	int a[10] = { 4, 5, 8, 7, 9, 1, 6, 3, 0, 2 };
+	int n = sizeof(a) / sizeof(a[0]);
+	SelectSort(a, n);
+	PrintArray(a, n);
+}
+
+void TestHeapSort()
+{
+	int a[10] = { 4, 5, 8, 7, 9, 1, 6, 3, 0, 2 };
+	int n = sizeof(a) / sizeof(a[0]);
+	HeapSort(a, n);
+	PrintArray(a, n);
+}
+
+void TestBubbleSort()
+{
+	int a[10] = { 4, 5, 8, 7, 9, 1, 6, 3, 0, 2 };
+	int n = sizeof(a) / sizeof(a[0]);
+	BubbleSort(a, n);
+	PrintArray(a, n);
+}
+
+void TestPartSort1()
+{
+	int a[10] = { 4, 5, 8, 7, 9, 1, 6, 3, 0, 2 };
+	int n = sizeof(a) / sizeof(a[0]);
+	PartSort1(a, 0, n - 1);
+	PrintArray(a, n);
+}
+//void testop()
 //{
 //	srand((unsigned)time(NULL));
-//	const int N = 100000;
 //	int* a1 = (int*)malloc(sizeof(int)*N);
 //	int* a2 = (int*)malloc(sizeof(int)*N);
 //	int* a3 = (int*)malloc(sizeof(int)*N);
@@ -33,11 +69,11 @@ void TestInsertSort()
 //	}
 //
 //	int begin1 = clock();
-//	InsertSort(a1, N);
+//	InsertSort(a1, n);
 //	int end1 = clock();
 //
 //	int begin2 = clock();
-//	ShellSort(a2, N);
+//	ShellSort(a2, n);
 //	int end2 = clock();
 //
 //	int begin3 = clock();
@@ -71,8 +107,8 @@ void TestInsertSort()
 //	free(a6);
 //}	// 测试排序的性能对比
 
-int main()
+	int main()
 {
-	TestInsertSort();
+	TestPartSort1();
 	return 0;
 }
