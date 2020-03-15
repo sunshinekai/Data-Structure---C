@@ -162,22 +162,125 @@ void BubbleSort(int* a, int n)
 }	// 冒泡排序
 
 // 快速排序递归实现
+
+int GetMidIndex(int*a, int begin, int end)
+{
+	int mid = begin + ((end - begin) >> 1);
+
+	if (a[begin] < a[mid])
+	{
+		if (a[mid] < a[end])
+			return mid;
+
+		else if (a[begin] > a[end])
+			return begin;
+
+		else
+			return end;
+	}
+
+	else
+	{
+		if (a[mid] > a[end])
+			return mid;
+
+		else if (a[begin] < a[end])
+			return begin;
+
+		else
+			return end;
+	}
+}	//三数取中法
+
 int PartSort1(int* a, int begin, int end)
 {
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[mid], &a[begin]);
+
 	int key = begin;
 	while (begin < end)
 	{
 		// end先走找小
 		while (begin < end && a[end] >= a[key])
-		{
 			--end;
-		}
+
 		//begin再走找大
 		while (begin < end && a[begin] <= a[key])
-		{
 			++begin;
-		}
+
 		Swap(&a[begin], &a[end]);
 	}
+
 	Swap(&a[key], &a[begin]);
+	return begin;
 }	// 快速排序hoare版本
+
+int PartSort2(int* a, int begin, int end)
+{
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[mid], &a[begin]);
+	// begin是第一个坑位
+	int key = a[begin];
+	while (begin < end)
+	{
+		while (begin < end && a[end] >= key)
+			--end;
+
+		a[begin] = a[end];
+
+		while (begin < end && a[begin] <= key)
+			++begin;
+
+		a[end] = a[begin];
+	}
+
+	a[begin] = key;
+
+	return begin;
+}	// 快速排序挖坑法
+
+int PartSort3(int* a, int begin, int end)
+{
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[mid], &a[end]);
+	int prev = begin - 1;
+	int cur = begin;
+	int key = end;
+	while (cur < end)
+	{
+		if (a[cur] < a[key] && ++prev != cur)
+			Swap(&a[prev], &a[cur]);
+		++cur;
+	}
+	Swap(&a[++prev], &a[key]);
+
+	return prev;
+}	// 快速排序前后指针法
+
+void QuickSort(int* a, int left, int right)
+{
+	if (left >= right)
+		return;
+
+	if (right - left + 1 < 10)
+	{
+		InsertSort(a + left, right - left + 1);
+	}
+	else
+	{
+		int keyindex = PartSort3(a, left, right);
+		// [0,keyindex-1] keyindex [keyindex,right]
+
+		QuickSort(a, left, keyindex - 1);
+		QuickSort(a, keyindex + 1, right);
+	}
+}	// 快速排序递归实现
+
+void QuickSortNonR(int* a, int left, int right)
+{
+	
+}	// 快速排序非递归实现
+
+void MergeSort(int* a, int n);	// 归并排序递归实现
+void MergeSortNonR(int* a, int n);	// 归并排序非递归实现
+void CountSort(int* a, int n);	// 计数排序
