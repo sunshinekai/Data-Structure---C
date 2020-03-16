@@ -33,6 +33,7 @@ void InsertSort(int* a, int n)
 	}
 }	// 插入排序
 
+
 /*
 1.	// 希尔排序
  void ShellSort(int* a, int n)
@@ -64,6 +65,7 @@ void InsertSort(int* a, int n)
  	}
  }
  */
+
 
 
 /*
@@ -111,8 +113,9 @@ void InsertSort(int* a, int n)
 */
 
 
+
 /*
-3.	// 快速排序递归3种思想实现
+3.	// 快速排序递归三种思想实现
 int GetMidIndex(int*a, int begin, int end)
 {
 	int mid = begin + ((end - begin) >> 1);
@@ -225,8 +228,9 @@ void QuickSort(int* a, int left, int right)
 		QuickSort(a, left, keyindex - 1);
 		QuickSort(a, keyindex + 1, right);
 	}
-}	// 快速排序递归实现
+}
 */
+
 
 
 /*
@@ -274,6 +278,7 @@ void MergeSort(int* a, int n)
 */
 
 
+
 /*
 5.	// 归并排序非递归实现
 void merge(int* a, int left, int mid, int right, int* tmp)
@@ -299,7 +304,6 @@ void merge(int* a, int left, int mid, int right, int* tmp)
 
 	memcpy(a + left, tmp + left, sizeof(int)*(right - left + 1));
 }
-
 
 void mergePass(int *arr, int k, int n, int *temp)
 {
@@ -329,6 +333,47 @@ void MergeSortNonR(int *a, int n)
 	free(temp);
 }
 */
+
+
+
+/*
+6.	// 计数排序(适用于数字集中的小规模排序)
+void CountSort(int* a, int n)
+{
+	int max = a[0];
+	int min = a[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] > max)
+			max = a[i];
+
+		if (a[i] < min)
+			min = a[i];
+	}
+	int range = max - min + 1;
+	int* countA = (int*)malloc(sizeof(int)*range);
+	memset(countA, 0, sizeof(int)*range);
+	// 统计数据出现的次数
+	for (int i = 0; i < n; i++)
+	{
+		int j = a[i] - min;
+		countA[j]++;
+	}
+
+	// 根据次数排序写回原数组
+	int index = 0;
+	for (int i = 0; i < range; i++)
+	{
+		while (countA[i]--)
+		{
+			a[index++] = i + min;
+		}
+	}
+	free(countA);
+
+}
+*/
+
 
 int* sortArray(int* nums, int numsSize, int* returnSize)
 {
