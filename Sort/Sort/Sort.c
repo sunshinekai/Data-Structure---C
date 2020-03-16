@@ -162,6 +162,7 @@ void BubbleSort(int* a, int n)
 	}
 }	// 冒泡排序
 
+
 // 快速排序递归实现
 
 int GetMidIndex(int*a, int begin, int end)
@@ -378,13 +379,13 @@ void merge(int* a, int left, int mid, int right, int* tmp)
 void mergePass(int *arr, int k, int n, int *temp)
 {
 	int i = 0;
-	//从前往后,将2个长度为k的子序列合并为1个
+	// 从前往后,将2个长度为k的子序列合并为1个
 	while (i < n - 2 * k + 1)
 	{
 		merge(arr, i, i + k - 1, i + 2 * k - 1, temp);
 		i += 2 * k;
 	}
-	//合并区间[i, n - 1]有序的左半部分[i, i + k - 1]以及不及一个步长的右半部分[i + k, n - 1]
+	// 合并区间[i, n - 1]有序的左半部分[i, i + k - 1]以及不及一个步长的右半部分[i + k, n - 1]
 	if (i < n - k)
 	{
 		merge(arr, i, i + k - 1, n - 1, temp);
@@ -403,4 +404,37 @@ void MergeSortNonR(int *a, int n)
 	free(temp);
 }	// 归并排序非递归实现
 
-void CountSort(int* a, int n);	// 计数排序(适用于小规模排序)
+void CountSort(int* a, int n)
+{
+	int max = a[0];
+	int min = a[0];
+	for (int i = 0; i < n; i++)
+	{
+		if(a[i] > max)
+			max = a[i];
+
+		if(a[i] < min)
+			min = a[i];
+	}
+	int range = max - min + 1;
+	int* countA = (int*)malloc(sizeof(int)*range);
+	memset(countA, 0, sizeof(int)*range);
+	// 统计数据出现的次数
+	for (int i = 0; i < n; i++)
+	{
+		int j = a[i] - min;
+		countA[j]++;
+	}
+
+	// 根据次数排序写回原数组
+	int index = 0;
+	for (int i = 0; i < range; i++)
+	{
+		while (countA[i]--)
+		{
+			a[index++] = i + min;
+		}
+	}
+	free(countA);
+
+}	// 计数排序(适用于数字集中的小规模排序)

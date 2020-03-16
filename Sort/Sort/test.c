@@ -72,6 +72,14 @@ void TestMergeSortNonR()
 	PrintArray(a, n);
 }
 
+void TestCountSort()
+{
+	int a[10] = { 4, 5, 8, 7, 9, 1, 6, 3, 0, 2 };
+	int n = sizeof(a) / sizeof(a[0]);
+	CountSort(a, n);
+	PrintArray(a, n);
+}
+
 void Testop()
 {
 	srand((unsigned)time(NULL));
@@ -159,6 +167,6 @@ void Testop()
 
 int main()
 {
-	Testop();
+	TestCountSort();
 	return 0;
 }
