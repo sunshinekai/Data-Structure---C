@@ -1,15 +1,7 @@
-#include"Sort.h"
-#include"Stack.h"
-
-void PrintArray(int* a, int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		printf("%d ", a[i]);
-	}
-
-	printf("\n");
-}
+/*
+给定一个整数数组 nums，将该数组升序排列。
+链接：https://leetcode-cn.com/problems/sort-an-array/
+*/
 
 void Swap(int* p1, int* p2)
 {
@@ -41,129 +33,86 @@ void InsertSort(int* a, int n)
 	}
 }	// 插入排序
 
-void ShellSort(int* a, int n)
-{
-	int gap = n;
-	while (gap > 1)
-	{
-		gap = gap / 3 + 1;
-		for (int i = 0; i < n - gap; i++)
-		{
-			// 单趟排序，间距为gap的插入排序
-			int end = i;
-			int tmp = a[end + gap];
-			while (end >= 0)
-			{
-				if (a[end] > tmp)
-				{
-					a[end + gap] = a[end];
-					end -= gap;
-				}
-				else
-				{
-					break;
-				}
+/*
+1.	// 希尔排序
+ void ShellSort(int* a, int n)
+ {
+ 	int gap = n;
+ 	while (gap > 1)
+ 	{
+ 		gap = gap / 3 + 1;
+ 		for (int i = 0; i < n - gap; i++)
+ 		{
+ 			// 单趟排序，间距为gap的插入排序
+ 			int end = i;
+ 			int tmp = a[end + gap];
+ 			while (end >= 0)
+ 			{
+ 				if (a[end] > tmp)
+ 				{
+ 					a[end + gap] = a[end];
+ 					end -= gap;
+ 				}
+ 				else
+ 				{
+ 					break;
+ 				}
 
-				a[end + gap] = tmp;
-			}
-		}
-	}
-}	// 希尔排序
+ 				a[end + gap] = tmp;
+ 			}
+ 		}
+ 	}
+ }
+ */
 
-void SelectSort(int* a, int n)
-{
-	int begin = 0;
-	int end = n - 1;
-	while (end > begin)
-	{
-		int mini = begin, maxi = begin;
-		for (int i = begin; i <= end; i++)
-		{
-			if (a[i] > a[maxi])
-				maxi = i;
 
-			if (a[i] < a[mini])
-				mini = i;
-		}
-		
-		Swap(&a[begin], &a[mini]);
+/*
+2.	// 堆排序
+ void AdjustDown(int* a, int n, int root)
+ {
+ 	int parent = root;
+ 	int child = parent * 2 + 1;
+ 	while (child < n)
+ 	{
+ 		if (child + 1 < n && a[child + 1] > a[child])
+ 		{
+ 			++child;
+ 		}
 
-		if (begin == maxi)
-			maxi = mini;
+ 		if (a[child] > a[parent])
+ 		{
+ 			Swap(&a[child], &a[parent]);
+ 			parent = child;
+ 			child = parent * 2 + 1;
+ 		}
+ 		else
+ 		{
+ 			break;
+ 		}
+ 	}
+ }	//向下调整算法
 
-		Swap(&a[end], &a[maxi]);
+ void HeapSort(int* a, int n)
+ {
+     	    //升序建大堆
+     	for (int i = (n - 1 - 1) / 2; i >= 0; i--)
+     	{
+     		AdjustDown(a, n, i);
+     	}
 
-		++begin;
-		--end;
-	}
-}	// 选择排序
+     	int end = n - 1;
+     	while (end > 0)
+     	{
+     		Swap(&a[0], &a[end]);
+     		AdjustDown(a, end, 0);
+     		--end;
+     	}
+ }
+*/
 
-void AdjustDown(int* a, int n, int root)
-{
-	int parent = root;
-	int child = parent * 2 + 1;
 
-	while (child < n)
-	{
-		if (child + 1 < n && a[child + 1] > a[child])
-		{
-			++child;
-		}
-
-		if (a[child] > a[parent])
-		{
-			Swap(&a[child], &a[parent]);
-			parent = child;
-			child = parent * 2 + 1;
-		}
-		else
-		{
-			break;
-		}
-	}
-}	//向下调整算法
-
-void HeapSort(int* a, int n)
-{
-	//升序建大堆
-	for (int i = (n - 1 - 1) / 2; i >= 0; i--)
-	{
-		AdjustDown(a, n, i);
-	}
-
-	int end = n - 1;
-	while (end > 0)
-	{
-		Swap(&a[0], &a[end]);
-		AdjustDown(a, end, 0);
-		--end;
-	}
-}	// 堆排序
-
-void BubbleSort(int* a, int n)
-{
-	int exchange = 0;
-	int end = n;
-	while (end > 0)
-	{
-		for (int i = 0; i < end - 1; i++)
-		{
-			if (a[i] > a[i + 1])
-			{
-				Swap(&a[i], &a[i + 1]);
-				exchange = 1;
-			}
-		}
-
-		if (exchange == 0)
-			break;
-
-		--end;
-	}
-}	// 冒泡排序
-
-// 快速排序递归实现
-
+/*
+3.	// 快速排序递归3种思想实现
 int GetMidIndex(int*a, int begin, int end)
 {
 	int mid = begin + ((end - begin) >> 1);
@@ -205,7 +154,7 @@ int PartSort1(int* a, int begin, int end)
 		while (begin < end && a[end] >= a[key])
 			--end;
 
-		// begin再走找大
+		//begin再走找大
 		while (begin < end && a[begin] <= a[key])
 			++begin;
 
@@ -267,48 +216,21 @@ void QuickSort(int* a, int left, int right)
 	{
 		InsertSort(a + left, right - left + 1);
 	}
+
 	else
 	{
-		int keyindex = PartSort3(a, left, right);
+		int keyindex = PartSort2(a, left, right);
 		// [0,keyindex-1] keyindex [keyindex,right]
 
 		QuickSort(a, left, keyindex - 1);
 		QuickSort(a, keyindex + 1, right);
 	}
 }	// 快速排序递归实现
+*/
 
-void QuickSortNonR(int* a, int left, int right)
-{
-	Stack st;
-	StackInit(&st);
-	StackPush(&st, left);
-	StackPush(&st, right);
-	while (!StackEmpty(&st))
-	{
-		int end = StackTop(&st);
-		StackPop(&st);
-		int begin = StackTop(&st);
-		StackPop(&st);
 
-		int keyindex = PartSort3(a, begin, end);
-		// [begin, keyindex - 1] keyindex [keyindex + 1]
-		if (begin < keyindex - 1)
-		{
-			StackPush(&st, begin);
-			StackPush(&st, keyindex - 1);
-		}
-
-		if (keyindex + 1 < end)
-		{
-			StackPush(&st, keyindex + 1);
-			StackPush(&st, end);
-		}
-	}
-
-	StackDestory(&st);
-
-}	// 快速排序非递归实现
-
+/*
+4.	// 归并排序递归实现
 void _MergeSort(int* a, int begin, int end, int* tmp)
 {
 	if (begin >= end)
@@ -348,8 +270,12 @@ void MergeSort(int* a, int n)
 	_MergeSort(a, 0, n - 1, tmp);
 	free(tmp);
 
-}	// 归并排序递归实现
+}
+*/
 
+
+/*
+5.	// 归并排序非递归实现
 void merge(int* a, int left, int mid, int right, int* tmp)
 {
 	// [left, mid]
@@ -365,7 +291,7 @@ void merge(int* a, int left, int mid, int right, int* tmp)
 		else
 			tmp[index++] = a[begin2++];
 	}
-	while(begin1 <= end1)
+	while (begin1 <= end1)
 		tmp[index++] = a[begin1++];
 
 	while (begin2 <= end2)
@@ -401,6 +327,12 @@ void MergeSortNonR(int *a, int n)
 		k *= 2;
 	}
 	free(temp);
-}	// 归并排序非递归实现
+}
+*/
 
-void CountSort(int* a, int n);	// 计数排序(适用于小规模排序)
+int* sortArray(int* nums, int numsSize, int* returnSize)
+{
+	MergeSortNonR(nums, numsSize);
+	*returnSize = numsSize;
+	return nums;
+}
