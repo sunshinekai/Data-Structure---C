@@ -5,7 +5,7 @@ void StackInit(Stack* pst)
 	assert(pst);
 	pst->a = NULL;
 	pst->top = pst->capacity = 0;
-}   // 初始化栈
+}	// 初始化栈
 
 void StackDestory(Stack* pst)
 {
@@ -14,7 +14,7 @@ void StackDestory(Stack* pst)
 	pst->a = NULL;
 	pst->top = pst->capacity = 0;
 	printf("The stack is empty");
-}   //栈的销毁
+}	//栈的销毁
 
 void StackPush(Stack* pst, STDataType x)
 {
@@ -27,19 +27,19 @@ void StackPush(Stack* pst, STDataType x)
 	}
 	pst->a[pst->top] = x;
 	pst->top++;
-}   // 入栈
+}	// 入栈
 
 void StackPop(Stack* pst)
 {
 	assert(pst && pst->top > 0);
 	--pst->top;
-}   // 出栈
+}	// 出栈
 
 STDataType StackTop(Stack* pst)
 {
 	assert(pst);
 	return pst->a[pst->top - 1];
-}   // 获取栈顶元素
+}	// 获取栈顶元素
 
 int StackEmpty(Stack* pst)
 {
