@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="seqlist.h">
+    <ClInclude Include="Seqlist.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="seqlist.c">
+    <ClCompile Include="Seqlist.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="test.c">

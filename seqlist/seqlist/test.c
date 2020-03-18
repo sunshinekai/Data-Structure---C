@@ -1,4 +1,4 @@
-#include"seqlist.h"
+#include"Seqlist.h"
 
 void TestSeqlist1()
 {

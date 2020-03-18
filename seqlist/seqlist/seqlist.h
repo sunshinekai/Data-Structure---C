@@ -11,7 +11,7 @@ typedef struct Seqlist
 	size_t _size;
 	size_t _capacity;
 }Seqlist;
- // 顺序表的定义
+// 顺序表的定义
 
 void SeqlistInit(Seqlist* ps); // 顺序表初始化
 void SeqlistDestory(Seqlist* ps); // 顺序表销毁

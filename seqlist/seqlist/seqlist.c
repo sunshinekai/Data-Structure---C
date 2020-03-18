@@ -1,4 +1,4 @@
-#include"seqlist.h"
+#include"Seqlist.h"
 
 void SeqlistInit(Seqlist* ps)
 {
@@ -21,7 +21,7 @@ void SeqlistCheckcapacity(Seqlist* ps)
 	if (ps->_size >= ps->_capacity)
 	{
 		size_t newcapacity = ps->_capacity == 0 ? 4 : ps->_capacity * 2;
-		ps->_a=realloc(ps->_a,newcapacity * 2 * sizeof(SLDataType));
+		ps->_a = realloc(ps->_a, newcapacity * 2 * sizeof(SLDataType));
 		ps->_capacity = newcapacity;
 	}
 }   // 检查空间，如果满了，进行增容
@@ -57,7 +57,7 @@ void SeqlistPushFront(Seqlist* ps, SLDataType x)
 	SeqlistCheckcapacity(ps);
 	size_t end = ps->_size;
 	// 挪动数据
-	while(end > 0)
+	while (end > 0)
 	{
 		ps->_a[end] = ps->_a[end - 1];
 		--end;

@@ -11,10 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{49FFAF8E-9906-4D66-892C-45F03C70FB58}</ProjectGuid>
+    <ProjectGuid>{B4767447-5841-4CAB-8E6B-EBA738354EEE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>seqlisth</RootNamespace>
-    <ProjectName>seqlist</ProjectName>
+    <RootNamespace>Seqlist</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -79,10 +78,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="seqlist.h" />
+    <ClInclude Include="Seqlist.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="seqlist.c" />
+    <ClCompile Include="Seqlist.c" />
     <ClCompile Include="test.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
