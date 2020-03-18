@@ -26,5 +26,5 @@ int SeqListFind(Seqlist* ps, SLDataType x); // 顺序表查找
 void SeqListInsert(Seqlist* ps, size_t pos, SLDataType x); // 顺序表在pos位置插入x
 void SeqListErase(Seqlist* ps, size_t pos); // 顺序表删除pos位置的值
 void SeqListRmove(Seqlist* ps, SLDataType x); // 顺序表删除数据x
-void SeqListBubbleSort(Seqlist* ps);  // 顺序表的冒泡排序
+void SeqListBubbleSort(Seqlist* ps); // 顺序表的冒泡排序
 int SeqListBinaryFind(Seqlist* ps, SLDataType x); // 顺序表二分查找

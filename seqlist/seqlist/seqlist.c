@@ -5,7 +5,7 @@ void SeqlistInit(Seqlist* ps)
 	assert(ps);
 	ps->_a = NULL;
 	ps->_size = ps->_capacity = 0;
-}   // 顺序表初始化
+}	// 顺序表初始化
 
 void SeqlistDestory(Seqlist* ps)
 {
@@ -13,7 +13,7 @@ void SeqlistDestory(Seqlist* ps)
 	free(ps->_a);
 	ps->_a = NULL;
 	ps->_size = ps->_capacity = 0;
-}   // 顺序表销毁
+}	// 顺序表销毁
 
 void SeqlistCheckcapacity(Seqlist* ps)
 {
@@ -24,7 +24,7 @@ void SeqlistCheckcapacity(Seqlist* ps)
 		ps->_a = realloc(ps->_a, newcapacity * 2 * sizeof(SLDataType));
 		ps->_capacity = newcapacity;
 	}
-}   // 检查空间，如果满了，进行增容
+}	// 检查空间，如果满了，进行增容
 
 void SeqlistPrint(Seqlist* ps)
 {
@@ -34,7 +34,7 @@ void SeqlistPrint(Seqlist* ps)
 		printf("%d ", ps->_a[i]);
 	}
 	printf("\n");
-}   // 顺序表打印
+}	// 顺序表打印
 
 void SeqlistPushBack(Seqlist* ps, SLDataType x)
 {
@@ -42,13 +42,13 @@ void SeqlistPushBack(Seqlist* ps, SLDataType x)
 	SeqlistCheckcapacity(ps);
 	ps->_a[ps->_size++] = x;
 	//ps->_size++;
-}   // 顺序表尾插
+}	// 顺序表尾插
 
 void SeqlistPopBack(Seqlist* ps)
 {
 	assert(ps && ps->_size > 0);
 	ps->_size--;
-}   // 顺序表尾删
+}	// 顺序表尾删
 
 void SeqlistPushFront(Seqlist* ps, SLDataType x)
 {
@@ -64,7 +64,7 @@ void SeqlistPushFront(Seqlist* ps, SLDataType x)
 	}
 	ps->_a[0] = x;
 	ps->_size++;
-}   // 顺序表头插
+}	// 顺序表头插
 
 void SeqlistPopFront(Seqlist* ps)
 {
@@ -74,7 +74,7 @@ void SeqlistPopFront(Seqlist* ps)
 		ps->_a[i - 1] = ps->_a[i];
 	}
 	ps->_size--;
-}   // 顺序表头删
+}	// 顺序表头删
 
 int SeqListFind(Seqlist* ps, SLDataType x)
 {
@@ -86,7 +86,7 @@ int SeqListFind(Seqlist* ps, SLDataType x)
 		}
 	}
 	return -1;
-}   // 顺序表查找
+}	// 顺序表查找
 
 void SeqListInsert(Seqlist* ps, size_t pos, SLDataType x)
 {
@@ -102,7 +102,7 @@ void SeqListInsert(Seqlist* ps, size_t pos, SLDataType x)
 
 	ps->_a[pos] = x;
 	ps->_size++;
-}   // 顺序表在pos位置插入x
+}	// 顺序表在pos位置插入x
 
 void SeqListErase(Seqlist* ps, size_t pos)
 {
@@ -115,7 +115,7 @@ void SeqListErase(Seqlist* ps, size_t pos)
 		++i;
 	}
 	ps->_size--;
-}   // 顺序表删除pos位置的值
+}	// 顺序表删除pos位置的值
 
 void SeqListRmove(Seqlist* ps, SLDataType x)
 {
@@ -124,7 +124,7 @@ void SeqListRmove(Seqlist* ps, SLDataType x)
 	{
 		SeqListErase(ps, pos);
 	}
-}   // 顺序表删除数据x
+}	// 顺序表删除数据x
 
 void SeqListBubbleSort(Seqlist* ps)
 {
@@ -146,7 +146,7 @@ void SeqListBubbleSort(Seqlist* ps)
 			break;
 		}
 	}
-}   // 顺序表的冒泡排序
+}	// 顺序表的冒泡排序
 
 int SeqListBinaryFind(Seqlist* ps, SLDataType x)
 {
@@ -165,4 +165,4 @@ int SeqListBinaryFind(Seqlist* ps, SLDataType x)
 			end = mid - 1;
 	}
 	return -1;
-}   // 顺序表二分查找
+}	// 顺序表二分查找
