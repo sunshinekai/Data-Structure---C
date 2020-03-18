@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2B7CAA32-16B4-4764-94E6-19D3C67170BB}</ProjectGuid>
+    <ProjectGuid>{A00DF24E-83FD-4A33-951E-972309D28574}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Seqlist</RootNamespace>
   </PropertyGroup>
@@ -78,6 +78,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Seqlist\Seqlist\Seqlist\Seqlist.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Seqlist\Seqlist\Seqlist\Seqlist.c" />
+    <ClCompile Include="..\..\..\Seqlist\Seqlist\Seqlist\test.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
