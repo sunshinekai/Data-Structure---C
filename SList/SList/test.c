@@ -22,7 +22,7 @@ void TestSList1()
 	SListPrint(plist);
 	SListPopBack(&plist);
 	SListPrint(plist);
-}   //尾插、尾删测试
+}	//尾插、尾删测试
 void TestSList2()
 {
 	SListNode* plist = NULL;
@@ -56,7 +56,7 @@ void TestSList2()
 	SListPrint(plist);
 	SListPopFront(&plist);
 	SListPrint(plist);
-}   //头插、头删、查找、插入(指定位置后的值并修改)、删除(指定位置后的值)测试
+}	//头插、头删、查找、插入(指定位置后的值并修改)、删除(指定位置后的值)测试
 
 void TestSList3()
 {
@@ -72,7 +72,7 @@ void TestSList3()
 	SListDestory(&plist);
 	SListPrint(plist);
 
-}   //销毁测试
+}	//销毁测试
 int main()
 {
 	TestSList3();

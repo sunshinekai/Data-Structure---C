@@ -7,7 +7,7 @@ SListNode* BuySListNode(SLTDataType x)
 	node->next = NULL;
 
 	return node;
-}   // 动态申请一个节点
+}	// 动态申请一个节点
 
 void SListPrint(SListNode* plist)
 {
@@ -18,7 +18,7 @@ void SListPrint(SListNode* plist)
 		cur = cur->next;
 	}
 	printf("NULL\n");
-}   // 单链表打印
+}	// 单链表打印
 
 void SListPushBack(SListNode** pplist, SLTDataType x)
 {
@@ -35,7 +35,7 @@ void SListPushBack(SListNode** pplist, SLTDataType x)
 
 		tail->next = newnode;
 	}
-}   // 单链表尾插
+}	// 单链表尾插
 
 void SListPushFront(SListNode** pplist, SLTDataType x)
 {
@@ -50,7 +50,7 @@ void SListPushFront(SListNode** pplist, SLTDataType x)
 		newnode->next = *pplist;
 		*pplist = newnode;
 	}
-}    // 单链表的头插
+}	// 单链表的头插
 
 void SListPopBack(SListNode** pplist)
 {
@@ -73,7 +73,7 @@ void SListPopBack(SListNode** pplist)
 
 		prev->next = NULL;
 	}
-}   // 单链表的尾删
+}	// 单链表的尾删
 
 void SListPopFront(SListNode** pplist)
 {
@@ -96,7 +96,7 @@ void SListPopFront(SListNode** pplist)
 		free(first);
 		*pplist = next;
 	}
-}   // 单链表头删
+}	// 单链表头删
 
 SListNode* SListFind(SListNode* plist, SLTDataType x)
 {
@@ -110,7 +110,7 @@ SListNode* SListFind(SListNode* plist, SLTDataType x)
 	}
 
 	return NULL;
-}   // 单链表查找
+}	// 单链表查找
 
 void SListInsertAfter(SListNode* pos, SLTDataType x)
 {
@@ -119,8 +119,8 @@ void SListInsertAfter(SListNode* pos, SLTDataType x)
 	SListNode* newnode = BuySListNode(x);
 	pos->next = newnode;
 	newnode->next = next;
-}   // 单链表在pos位置之后插入x
-    // 在pos之前插入要遍历两次，且必须从头开始找到pos的前一个数据
+}	/* 单链表在pos位置之后插入x
+	在pos之前插入要遍历两次，且必须从头开始找到pos的前一个数据 */ 
 
 void SListEraseAfter(SListNode* pos)
 {
@@ -131,8 +131,8 @@ void SListEraseAfter(SListNode* pos)
 		free(next);
 		pos->next = nextnext;
 	}
-}   // 单链表删除pos位置之后的值
-    // 在数据之前删除要遍历两次，且必须从头开始找到pos
+}	/* 单链表删除pos位置之后的值
+     在数据之前删除要遍历两次，且必须从头开始找到pos */
 
 void SListDestory(SListNode** pplist)
 {
@@ -145,4 +145,4 @@ void SListDestory(SListNode** pplist)
 		cur = next;
 	}
 	*pplist = NULL;
-}   // 单链表的销毁
+}	// 单链表的销毁
