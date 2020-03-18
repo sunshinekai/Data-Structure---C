@@ -1,4 +1,4 @@
-#include"Seqlist.h"
+#include"seqlist.h"
 
 void TestSeqlist1()
 {
@@ -23,7 +23,7 @@ void TestSeqlist1()
 
 	printf("%d\n", SeqListFind(&s, 1));
 	printf("%d\n", SeqListBinaryFind(&s, 1));
-}	//顺序表的初始化、尾插、尾删、头插、头删、查找、二分查找测试
+}   //顺序表的初始化、尾插、尾删、头插、头删、查找、二分查找测试
 
 void TestSeqlist2()
 {
@@ -50,7 +50,7 @@ void TestSeqlist2()
 
 	SeqListRmove(&s, 1);
 	SeqlistPrint(&s);
-}	//顺序表任意位置(前)插入及删除、删除数据测试
+}   //顺序表任意位置(前)插入及删除、删除数据测试
 
 void TestSeqlist3()
 {
@@ -66,10 +66,10 @@ void TestSeqlist3()
 
 	SeqListBubbleSort(&s);
 	SeqlistPrint(&s);
-}	//顺序表(冒泡)排序测试
+}   //顺序表(冒泡)排序测试
 
 int main()
 {
-	TestSeqlist2();
+	TestSeqlist1();
 	return 0;
 }
