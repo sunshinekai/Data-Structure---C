@@ -82,6 +82,7 @@ void TestCountSort()
 
 void Testop()
 {
+	// #define N 100000
 	srand((unsigned)time(NULL));
 	int* a1 = (int*)malloc(sizeof(int)*N);
 	int* a2 = (int*)malloc(sizeof(int)*N);

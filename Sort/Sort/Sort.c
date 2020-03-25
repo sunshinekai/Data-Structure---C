@@ -271,7 +271,7 @@ void QuickSort(int* a, int left, int right)
 	else
 	{
 		int keyindex = PartSort3(a, left, right);
-		// [0,keyindex-1] keyindex [keyindex,right]
+		// [0,keyindex - 1] keyindex [keyindex + 1,right]
 
 		QuickSort(a, left, keyindex - 1);
 		QuickSort(a, keyindex + 1, right);
@@ -292,7 +292,7 @@ void QuickSortNonR(int* a, int left, int right)
 		StackPop(&st);
 
 		int keyindex = PartSort3(a, begin, end);
-		// [begin, keyindex - 1] keyindex [keyindex + 1]
+		// [begin, keyindex - 1] keyindex [keyindex + 1£¬end]
 		if (begin < keyindex - 1)
 		{
 			StackPush(&st, begin);
