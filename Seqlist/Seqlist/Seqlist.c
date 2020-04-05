@@ -151,7 +151,7 @@ void SeqListBubbleSort(Seqlist* ps)
 int SeqListBinaryFind(Seqlist* ps, SLDataType x)
 {
 	size_t begin = 0,
-		end = ps->_size - 1;
+	end = ps->_size - 1;
 	while (begin <= end)
 	{
 		size_t mid = (begin + end) / 2;
